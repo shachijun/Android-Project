@@ -99,6 +99,7 @@ public class ChessActivity extends ChessBoardActivity implements View.OnClickLis
         //
         controller = new AndroidChessController();
         doInitChessBoard(this, btnDraw);
+        btnNew.setEnabled(false);
         btnPlayBack.setEnabled(false);
     }
 
@@ -164,6 +165,7 @@ public class ChessActivity extends ChessBoardActivity implements View.OnClickLis
             }
             else if (v==btnNew) {
                 message.setText("New");
+                Move move = new Move("resign");
                 //
                 controller = new AndroidChessController();
                 doCleanupChessBoard(btnDraw);
@@ -177,9 +179,6 @@ public class ChessActivity extends ChessBoardActivity implements View.OnClickLis
                 Intent intent = new Intent(ChessActivity.this, PlaybackActivity.class);
                 intent.putExtra(INTENT_DATA_KEY_FILENAME, INTENT_DATA_FILENAME_LAST);
                 startActivity(intent);
-            }
-            else {
-               //"draw"
             }
         }
     }
@@ -240,6 +239,8 @@ public class ChessActivity extends ChessBoardActivity implements View.OnClickLis
                 controller.guiGame = null;
                 //
                 diaglogGetName.show(getFragmentManager(), "Get Game Title");
+                btnNew.setEnabled(true);
+
                 //
                 btnPlayBack.setEnabled(true);
             }
