@@ -95,12 +95,6 @@
             android:text="New" />
 
         <Button
-            android:id="@+id/btnSave"
-            android:layout_width="88dp"
-            android:layout_height="wrap_content"
-            android:text="Save" />
-
-        <Button
             android:id="@+id/btnPlayBack"
             android:layout_width="88dp"
             android:layout_height="wrap_content"

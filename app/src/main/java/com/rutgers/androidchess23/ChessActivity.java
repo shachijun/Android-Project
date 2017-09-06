@@ -30,7 +30,6 @@ public class ChessActivity extends ChessBoardActivity implements View.OnClickLis
     Button btnRollback;
     Button btnAI;
     Button btnResign;
-    Button btnSave;
     Button btnNew;
     Button btnBack;
     Button btnDraw;
@@ -82,7 +81,6 @@ public class ChessActivity extends ChessBoardActivity implements View.OnClickLis
         btnRollback = (Button) findViewById(R.id.btnRollback);
         btnAI       = (Button) findViewById(R.id.btnAI);
         btnResign   = (Button) findViewById(R.id.btnResign);
-        btnSave     = (Button) findViewById(R.id.btnSave);
         btnNew      = (Button) findViewById(R.id.btnNew);
         btnBack     = (Button) findViewById(R.id.btnBack);
         btnDraw     = (Button) findViewById(R.id.btnDraw);
@@ -91,7 +89,6 @@ public class ChessActivity extends ChessBoardActivity implements View.OnClickLis
         btnRollback.setOnClickListener(this);
         btnAI.setOnClickListener(this);
         btnResign.setOnClickListener(this);
-        btnSave.setOnClickListener(this);
         btnNew.setOnClickListener(this);
         btnBack.setOnClickListener(this);
         btnDraw.setOnClickListener(this);
@@ -102,7 +99,6 @@ public class ChessActivity extends ChessBoardActivity implements View.OnClickLis
         //
         controller = new AndroidChessController();
         doInitChessBoard(this, btnDraw);
-        btnSave.setEnabled(false);
         btnPlayBack.setEnabled(false);
     }
 
@@ -166,15 +162,11 @@ public class ChessActivity extends ChessBoardActivity implements View.OnClickLis
                 Move move = new Move("resign");
                 doMove(move, false);
             }
-            else if (v==btnSave) {
-                diaglogGetName.show(getFragmentManager(), "Get Game Title");
-            }
             else if (v==btnNew) {
                 message.setText("New");
                 //
                 controller = new AndroidChessController();
                 doCleanupChessBoard(btnDraw);
-                btnSave.setEnabled(false);
                 btnPlayBack.setEnabled(false);
             }
             else if (v==btnBack) {
@@ -249,7 +241,6 @@ public class ChessActivity extends ChessBoardActivity implements View.OnClickLis
                 //
                 diaglogGetName.show(getFragmentManager(), "Get Game Title");
                 //
-                btnSave.setEnabled(true);
                 btnPlayBack.setEnabled(true);
             }
         }
